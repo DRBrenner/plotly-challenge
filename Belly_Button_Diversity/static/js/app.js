@@ -18,64 +18,77 @@ function buildMetadata(sample) {
 
     })
   })
-}
+};
 
 
 function buildCharts(sample) {
 
 
- //THIS IS THE BUBBLE CHART.  I WASN'T SURE IF I SHOULD KEEP USING THE SAME
- //NAMES FOR THINGS SO I USED 'RESPONSE' AND 'BUBBLE' - BUT NOT SURE IF I DID IT
- //CORRECTLY.  ALSO, IT SEEMS LIKE THE BUBBLE SIZE SHOULD BE ON THE "COUNT"
- //OF SAMPLE VALUES, NOT SAMPLE VALUES, BUT THE EXAMPLE PHOTO LOOKS LIKE
- //IT WAS JUST DON'T ON THE VALUE.
+  //THIS IS THE BUBBLE CHART.  I WASN'T SURE IF I SHOULD KEEP USING THE SAME
+  //NAMES FOR THINGS SO I USED 'RESPONSE' AND 'BUBBLE' - BUT NOT SURE IF I DID IT
+  //CORRECTLY.  ALSO, IT SEEMS LIKE THE BUBBLE SIZE SHOULD BE ON THE "COUNT"
+  //OF SAMPLE VALUES, NOT SAMPLE VALUES, BUT THE EXAMPLE PHOTO LOOKS LIKE
+  //IT WAS JUST DON'T ON THE VALUE.
 
   //   // @TODO: Use `d3.json` to fetch the sample data for the plots
   d3.json(`/samples/${sample}`).then((response) => {
-  //   // @TODO: Build a Bubble Chart using the sample data
-  var trace1 = {
-    x: response.map(data => data.otu_ids),
-    y: response.map(data => data.sample_values),
-    marker: {
-      size: response.map(data => data.sample_values),
-      color: response.map(data => data.otu_ids)
+    //   // @TODO: Build a Bubble Chart using the sample data
+    var trace1 = {
+      x: response.otu_ids,
+      y: response.sample_values,
+      text: response.otu_ids,
+      mode: 'markers',
+      marker: {
+        size: response.sample_values,
+        color: response.otu_ids,
+        colorscale: "Rainbow"
+      }
+    };
+    var bubble = [trace1];
+
+    var layout = {
+      title: 'Bubble Chart',
+      showlegend: false,
+      plot_bgcolor:"lightgray",
+      paper_bgcolor:"#FFF3",
+      height: innerHeight,
+      width: innerWidth
+    };
+
+    Plotly.newPlot('bubble', bubble, layout, { responsive: true });
+  });
+
+  //THIS IS THE PIE CHART. AGAIN, I WASN'T SURE IF I SHOULD REUSE VARIABLES,
+  // SO I CALLED THINGS 'RESPONSE' AND 'PIEINFO.'  NOT SURE IF I DID THE SLICE
+  // IN THE CORRECT PLACE
+
+  //   // @TODO: Build a Pie Chart
+  //   // HINT: You will need to use slice() to grab the top 10 sample_values,
+  //   // otu_ids, and labels (10 each).
+  d3.json(`/samples/${sample}`).then((response) => {
+    var pieInfo = [{
+      values: response.sample_values.slice(0, 10),
+      labels: response.otu_ids.slice(0, 10),
+      hovertext: response.otu_labels.slice(0, 10),
+      type: 'pie'
+    }];
+
+    var layout = {
+      height: 500,
+      width: 800,
+      margin: {
+        l: 10,
+        r: 10,
+        b: 10,
+        t: 1,
+        pad: 1
     }
-  };
-}
-  var bubble = [trace1];
+      
+    };
 
-  var layout = {
-    title: 'Bubble Chart',
-    showlegend: false,
-    height: 400,
-    width: 800
-  };
-
-  Plotly.newPlot('bubble', bubble, layout);
-
-
-//THIS IS THE PIE CHART. AGAIN, I WASN'T SURE IF I SHOULD REUSE VARIABLES,
-// SO I CALLED THINGS 'RESPONSE' AND 'PIEINFO.'  NOT SURE IF I DID THE SLICE
-// IN THE CORRECT PLACE
-
-      //   // @TODO: Build a Pie Chart
-      //   // HINT: You will need to use slice() to grab the top 10 sample_values,
-      //   // otu_ids, and labels (10 each).
-      d3.json(`/samples/${sample}`).then((response) => {
-        var pieInfo = [{
-          values: response.map(data => data.sample_values.slice(0, 10)),
-          labels: response.map(data => data.otu_ids.slice(0, 10)),
- ??????? hovertext : response.map(data => data.otu_labels.slice(0, 10)),  
-        type: 'pie'
-      }];
-
-      var layout = {
-        height: 400,
-        width: 400
-      };
-
-??Plotly.newPlot('pie', pieInfo, layout);
-
+    Plotly.newPlot('pie', pieInfo, layout, { displayModeBar: false }, { responsive: true });
+  });
+};
 
 //THIS PART IS WORKING FOR THE SELECT SAMPLE AND METADATA DISPLAY, BUT
 //I THINK I MESSED UP CLOSING [],(), OR {}. AND NOT SURE IF THE LAST LINE,
@@ -106,6 +119,6 @@ function optionChanged(newSample) {
   buildCharts(newSample);
   buildMetadata(newSample);
 };
-}
+
 // Initialize the dashboard
 init();
