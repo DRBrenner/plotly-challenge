@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Flask Plotlyjs Example</title>
+  <title>BellyButtonBacteria</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
@@ -13,9 +13,9 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-12 jumbotron text-center">
+      <div class="col-md-12 jumbotron text-center" style="background-color:lightgreen"> 
         <h1>Belly Button Biodiversity Dashboard</h1>
-        <p>Use the interactive charts below to explore the dataset</p>
+        <p>Use the "Select SAMPLE" dropdown below to explore the dataset</p>
       </div>
     </div>
     <div class="row">
@@ -26,10 +26,12 @@
           </select>
         </div>
         <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Sample MetaData</h3>
+          <div class="panel-heading" style="background-color:lightgreen">
+            <h3 class="panel-title" style="color:black">Sample MetaData</h3>
           </div>
-          <div id="sample-metadata" class="panel-body"></div>
+          <div id="sample-metadata" class="panel-body">
+
+          </div>
         </div>
       </div>
       <div class="col-md-5">
