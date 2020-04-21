@@ -1,6 +1,6 @@
 # Belly Button Biodiversity
 
-![Bacteria by filterforge.com](Belly_Button_Diversity\static\images\bacteria.jpg)
+![](Belly_Button_Diversity/static/images/bacteria.jpg)
 
 In this assignment, I built an interactive dashboard to explore the [Belly Button Biodiversity DataSet](http://robdunnlab.com/projects/belly-button-biodiversity/).
 
