@@ -25,12 +25,3 @@ This is a full stack assignment using:
 5. Update all of the plots any time that a new sample is selected.
 
 6. Deploy Flask app to Heroku.
-
-
-## Hints
-
-* Don't forget to `pip install -r requirements.txt` before you start your server.
-
-* Use `console.log` inside of your JavaScript code to see what your data looks like at each step.
-
-* Refer to the [Plotly.js Documentation](https://plot.ly/javascript/) when building the plots.
