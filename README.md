@@ -39,5 +39,5 @@ This project also functions by performing the following:
 5. Scroll down to see the bubble chart.  (This chart doesn't tell much of a story, but it was the assignment.) 
 6. I've included a screenshot of the dashboard below.
 
-![](Belly_Button_Diversity\static\images\pieChart.png)
-![](Belly_Button_Diversity\static\images\bubbleChart.png)
+![](Belly_Button_Diversity/static/images/pieChart.png)
+![](Belly_Button_Diversity/static/images/bubbleChart.png)
