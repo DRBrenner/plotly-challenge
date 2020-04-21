@@ -25,3 +25,6 @@ This is a full stack assignment using:
 5. Update all of the plots any time that a new sample is selected.
 
 6. Deploy Flask app to Heroku.
+
+Test a change
+
