@@ -26,3 +26,18 @@ This is a full stack assignment using:
 
 6. Deploy Flask app to Heroku.
 
+### Dashboard
+
+The dashboard can by viewed at  https://plotlygene.herokuapp.com/
+
+This project also functions by performing the following:
+
+1. Download the repository.
+2. Run the python app.py file.
+3. Open the running local server in a browser.  
+4. Select a sample from the dropdown list on the left.  The "Sample MetaData" provides information about the person owning belly button sample.  The pie chart shows the diversity of the belly sample.  Hover over the pie chart to see the bacteria. 
+5. Scroll down to see the bubble chart.  (This chart doesn't tell much of a story, but it was the assignment.) 
+6. I've included a screenshot of the dashboard below.
+
+![](Belly_Button_Diversity\static\images\pieChart.png)
+![](Belly_Button_Diversity\static\images\bubbleChart.png)
